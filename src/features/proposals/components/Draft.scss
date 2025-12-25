@@ -1,0 +1,56 @@
+.DraftPage {
+  padding: 4rem 0;
+  min-height: 100vh;
+
+  h2,
+  h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .draft-table {
+    margin-top: 2rem;
+
+    .table-header {
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--foreground);
+    }
+
+    .draft-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+  }
+
+  .no-data-box {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+
+    .no-data-img {
+      max-width: 380px;
+      opacity: 0.8;
+    }
+  }
+}
+
+/* Clean reusable class for destructive button */
+.danger-btn {
+  border-color: var(--primary) !important; // red
+  color: var(--primary) !important;
+  box-shadow: none;
+
+  &:hover {
+    background: var(--primary) !important;
+    color: #fff !important;
+  }
+}
+
+/* Optional: container cleanup if needed later */
+.Main_row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}

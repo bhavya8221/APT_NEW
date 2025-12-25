@@ -1,0 +1,102 @@
+.otp-step-page {
+  min-height: 100dvh;
+  background: #f7f9fc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+/* Card wrapper */
+.otp-card {
+  width: 100%;
+  max-width: 520px;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+  transition: 0.25s ease;
+  background: #fff;
+
+  &:hover {
+    box-shadow: var(--card-shadow-hover);
+    transform: translateY(-2px);
+  }
+
+  .otp-title {
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--foreground);
+  }
+
+  /* Step bar */
+  .otp-steps {
+    margin-bottom: 2rem;
+  }
+
+  /* Step content container */
+  .otp-content {
+    margin-bottom: 2rem;
+  }
+
+  /* OTP buttons (Send OTP / Verify OTP) */
+  .otp-actions {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5rem;
+
+    .otp-btn {
+      width: 100%;
+      max-width: 280px;
+      height: 45px;
+      background: var(--primary);
+      color: var(--primary-foreground);
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.2s ease;
+
+      &:hover {
+        background: var(--primary-hover);
+      }
+
+      &:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  /* Sign-in footer area */
+  .signin-link {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 14px;
+    color: #666;
+
+    .signin-link-text {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: underline;
+      cursor: pointer;
+
+      &:hover {
+        color: var(--primary);
+      }
+    }
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .otp-card {
+    padding: 1.6rem;
+
+    .otp-title {
+      font-size: 22px;
+    }
+  }
+}

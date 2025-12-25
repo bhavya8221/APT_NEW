@@ -1,0 +1,521 @@
+@use "@/features/chat/variables" as *;
+
+.chat-sidebar {
+  width: 320px;
+  height: 100vh;
+  background: linear-gradient(180deg, $bg-primary 0%, $bg-light 100%);
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid $border-color;
+  position: relative;
+  overflow: hidden;
+
+  // ===== BACK TO HOME BUTTON =====
+  .back-to-home-button {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.875rem 1.25rem;
+    margin: 1rem 1rem 0;
+    background: $bg-light;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    color: $text-secondary;
+    font-size: $font-size-sm;
+    font-weight: 500;
+    cursor: pointer;
+    transition: $transition-base;
+
+    .back-icon {
+      font-size: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      background: $bg-primary;
+      border-color: rgba($primary-blue, 0.3);
+      color: $primary-blue;
+      transform: translateX(-4px);
+
+      .back-icon {
+        transform: translateX(-4px);
+      }
+    }
+  }
+
+  // ===== CHAT SECTION =====
+  .chat-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+    overflow: hidden;
+    border-bottom: 2px solid $border-light;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, $primary-red 0%, $primary-blue 100%);
+    }
+  }
+
+  // ===== NEW CHAT BUTTON =====
+  .new-chat-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    background: linear-gradient(
+      135deg,
+      $primary-red 0%,
+      darken($primary-red, 8%) 100%
+    );
+    color: $text-white;
+    border: none;
+    border-radius: $border-radius-lg;
+    font-size: $font-size-base;
+    font-weight: 600;
+    cursor: pointer;
+    transition: $transition-base;
+    box-shadow: $shadow-md;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+
+    .icon {
+      font-size: 1.25rem;
+      font-weight: bold;
+      transition: transform 0.3s ease;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba($text-white, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s ease, height 0.6s ease;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: $shadow-lg;
+
+      .icon {
+        transform: rotate(90deg);
+      }
+
+      &::before {
+        width: 300px;
+        height: 300px;
+      }
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  // ===== SECTION HEADER =====
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    h5 {
+      font-size: $font-size-xs;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: $text-secondary;
+      margin: 0;
+    }
+  }
+
+  // ===== ADD BUSINESS BUTTON =====
+  .add-business-button {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(
+      135deg,
+      $primary-blue 0%,
+      darken($primary-blue, 10%) 100%
+    );
+    color: $text-white;
+    border: none;
+    border-radius: $border-radius-sm;
+    cursor: pointer;
+    transition: $transition-base;
+    box-shadow: 0 2px 6px rgba($primary-blue, 0.25);
+
+    svg {
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    &:hover {
+      transform: scale(1.15) rotate(90deg);
+      box-shadow: 0 4px 12px rgba($primary-blue, 0.35);
+    }
+  }
+
+  // ===== CONVERSATION LIST =====
+  .conversation-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex: 1;
+    padding-right: 4px;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba($primary-red, 0.2);
+      border-radius: 10px;
+      transition: background 0.3s ease;
+
+      &:hover {
+        background: rgba($primary-red, 0.4);
+      }
+    }
+
+    .conversation-item-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 0.875rem;
+      margin-bottom: 0.5rem;
+      border-radius: $border-radius;
+      cursor: pointer;
+      transition: $transition-base;
+      background: $bg-primary;
+      border: 1px solid transparent;
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: $primary-red;
+        border-radius: $border-radius 0 0 $border-radius;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      &:hover {
+        background: rgba($primary-red, 0.04);
+        border-color: rgba($primary-red, 0.15);
+        transform: translateX(4px);
+
+        &::before {
+          opacity: 1;
+        }
+
+        .menu-icon {
+          opacity: 1;
+        }
+      }
+
+      &.selected {
+        background: linear-gradient(
+          135deg,
+          $primary-red 0%,
+          darken($primary-red, 5%) 100%
+        );
+        border-color: $primary-red;
+        box-shadow: $shadow-sm;
+
+        &::before {
+          opacity: 1;
+          background: $text-white;
+        }
+
+        .title {
+          color: $text-white !important;
+          font-weight: 600;
+        }
+
+        .menu-icon {
+          color: $text-white;
+          opacity: 1;
+        }
+      }
+
+      .conversation-item {
+        flex: 1;
+        overflow: hidden;
+        padding-right: 0.5rem;
+
+        .title {
+          display: block;
+          font-size: $font-size-sm;
+          color: $text-primary;
+          font-weight: 500;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          transition: color 0.3s ease;
+        }
+      }
+
+      // Custom Menu Dropdown
+      .menu-wrapper {
+        position: relative;
+
+        .menu-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: none;
+          border: none;
+          font-size: 1rem;
+          color: $text-secondary;
+          opacity: 0;
+          transition: $transition-fast;
+          padding: 0.375rem;
+          border-radius: $border-radius-sm;
+          cursor: pointer;
+
+          &:hover {
+            background: rgba($primary-red, 0.1);
+            color: $primary-red;
+          }
+        }
+
+        .dropdown-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          z-index: 999;
+        }
+
+        .custom-dropdown {
+          position: absolute;
+          top: 100%;
+          right: 0;
+          margin-top: 0.25rem;
+          background: $bg-primary;
+          border: 1px solid $border-light;
+          border-radius: $border-radius-sm;
+          box-shadow: $shadow-lg;
+          z-index: 1000;
+          min-width: 120px;
+          animation: dropdownSlide 0.2s ease-out;
+
+          .dropdown-item {
+            display: block;
+            width: 100%;
+            padding: 0.625rem 0.875rem;
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: $font-size-sm;
+            color: $text-primary;
+            cursor: pointer;
+            transition: $transition-fast;
+
+            &:hover:not(:disabled) {
+              background: rgba($primary-red, 0.08);
+              color: $primary-red;
+            }
+
+            &.delete {
+              color: $primary-red;
+
+              &:hover:not(:disabled) {
+                background: rgba($primary-red, 0.1);
+              }
+            }
+
+            &:disabled {
+              opacity: 0.5;
+              cursor: not-allowed;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // ===== BUSINESS SECTION =====
+  .business-section {
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+    background: linear-gradient(
+      135deg,
+      rgba($primary-blue, 0.03) 0%,
+      rgba($primary-blue, 0.01) 100%
+    );
+    overflow: hidden;
+  }
+
+  // ===== BUSINESS LIST =====
+  .business-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex: 1;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba($primary-blue, 0.2);
+      border-radius: 10px;
+
+      &:hover {
+        background: rgba($primary-blue, 0.4);
+      }
+    }
+
+    .business-card {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.875rem;
+      margin-bottom: 0.5rem;
+      border-radius: $border-radius;
+      background: $bg-primary;
+      border: 1px solid $border-light;
+      cursor: pointer;
+      transition: $transition-base;
+
+      &:hover {
+        background: rgba($primary-blue, 0.04);
+        border-color: rgba($primary-blue, 0.3);
+        transform: translateX(4px);
+        box-shadow: $shadow-sm;
+      }
+
+      &.selected {
+        background: linear-gradient(
+          135deg,
+          $primary-blue 0%,
+          darken($primary-blue, 8%) 100%
+        );
+        border-color: $primary-blue;
+        box-shadow: $shadow-sm;
+
+        .business-icon {
+          color: $text-white;
+          background: rgba($text-white, 0.2);
+        }
+
+        .business-name {
+          color: $text-white;
+          font-weight: 600;
+        }
+
+        .business-location {
+          color: rgba($text-white, 0.85);
+        }
+      }
+
+      .business-icon {
+        font-size: 1.25rem;
+        color: $primary-blue;
+        background: rgba($primary-blue, 0.1);
+        padding: 0.5rem;
+        border-radius: $border-radius-sm;
+        flex-shrink: 0;
+        transition: $transition-fast;
+      }
+
+      .business-info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        flex: 1;
+        overflow: hidden;
+
+        .business-name {
+          font-size: $font-size-sm;
+          font-weight: 500;
+          color: $text-primary;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          transition: color 0.3s ease;
+        }
+
+        .business-location {
+          font-size: $font-size-xs;
+          color: $text-secondary;
+          transition: color 0.3s ease;
+        }
+      }
+    }
+  }
+}
+
+// ===== ANIMATIONS =====
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes dropdownSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Apply animations
+.conversation-item-wrapper,
+.business-card {
+  animation: slideIn 0.3s ease-out forwards;
+}
+
+// ===== RESPONSIVE =====
+@media (max-width: $breakpoint-md) {
+  .chat-sidebar {
+    width: 100%;
+  }
+}

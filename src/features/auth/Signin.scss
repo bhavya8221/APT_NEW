@@ -1,0 +1,91 @@
+.signin-page {
+  display: flex;
+  min-height: 100dvh;
+  background: #f7f9fc;
+}
+
+/* Left Brand Section */
+.signin-left {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--hero-gradient);
+
+  img {
+    width: 65%;
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.15));
+  }
+}
+
+/* Right Form Section */
+.signin-right {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signin-card {
+  width: 80%;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+}
+
+.signin-title {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Forgot password */
+.signin-forgot {
+  text-align: right;
+  color: #696969;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: -8px;
+
+  &:hover {
+    color: var(--primary);
+  }
+}
+
+/* Sign-in button */
+.signin-btn {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+/* Footer Links */
+.signin-links {
+  text-align: center;
+  margin-top: 1.4rem;
+  color: #b5b5b5;
+
+  .link {
+    display: block;
+    margin-top: 4px;
+    color: var(--accent);
+    text-decoration: underline;
+
+    &:hover {
+      color: var(--primary);
+    }
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .signin-left {
+    display: none;
+  }
+
+  .signin-right {
+    width: 100%;
+  }
+
+  .signin-card {
+    width: 92%;
+  }
+}

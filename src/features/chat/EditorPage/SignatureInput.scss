@@ -1,0 +1,25 @@
+.signature-preview {
+  margin-top: 10px;
+
+  .signature-image {
+    width: 200px;
+    height: 100px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--background);
+  }
+}
+
+.signature-modal {
+  .signature-pad-container {
+    border: 1px solid var(--border);
+    padding: 10px;
+    background: var(--card);
+    border-radius: var(--radius);
+
+    .signature-canvas {
+      border-radius: var(--radius-sm);
+      background: #fff;
+    }
+  }
+}

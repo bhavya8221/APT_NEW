@@ -1,0 +1,167 @@
+.calculator_main_container {
+
+    margin: 6rem 0px;
+    .subvalues {
+        color: black !important;
+        font-size: 14px !important;
+        margin: 0px 4px !important;
+    }
+    .description {
+        padding: 20px 0px;
+    }
+    .cal_main {
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+        width: 75%;
+        margin: 20px auto;
+        padding: 25px;
+        border-radius: 7px;
+        h2 {
+            margin-bottom: 25px;
+            color: #000;
+            font-style: normal;
+            font-weight: 800;
+            text-transform: capitalize;
+        }
+        h5 {
+            color: #000;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 42px;
+        }
+        p {
+            font-style: normal;
+            font-weight: 500;
+            line-height: 34px;
+        }
+    }
+    h4 {
+        text-align: center;
+        font-weight: bold;
+    }
+    .link {
+        color: inherit;
+        text-decoration: none;
+    }
+    .Answer_Container {
+        .red {
+            color: #EE2325 !important;
+        }
+    }
+    .Calculator {
+        margin: 20px;
+        border-radius: 20px;
+        border: 1px solid #F79192;
+        padding: 20px;
+        height: 100dvh;
+        overflow: scroll;
+        overflow-x: hidden;
+        h4 {
+            color: black;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 46px;
+        }
+        .Calculator_section {
+            .picture {
+                width: 100% !important;
+            }
+            .h5Heading {
+                margin: 10px 0px;
+                font-weight: bolder !important;
+                color: #EE2325;
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 24px;
+                text-decoration-line: underline;
+            }
+            p {
+                color: black;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 20px;
+            }
+        }
+    }
+    .Calculator_container {
+        .Button_style {
+            display: flex;
+            margin: 10px 0px;
+        }
+     
+        .button_theme {
+            border-radius: 12px !important;
+            border: 1px solid #EE2325 !important;
+            box-shadow: 2px 2px 14px 0px rgba(51, 51, 51, 0.10) !important;
+            color: #EE2325 !important;
+            margin: 10px auto;
+            width: 49%
+        }
+        .button_theme:hover {
+            color: white !important;
+        }
+        .add_placeholder,
+        .add_placeholder_doller {
+            position: absolute;
+            right: 335px;
+            margin-top: 4px;
+        }
+        border-radius: 7px;
+        background: rgba(238, 35, 37, 0.10);
+        padding: 20px;
+        .Answer_Container {
+            h5 {
+                color: #000;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 42px;
+                margin: 0 !important;
+            }
+            p {
+                color: black;
+                font-size: 15px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: 34px;
+                margin: 0 !important;
+            }
+        }
+        @media(max-width:767px) {
+            .add_placeholder,
+            .add_placeholder_doller {
+                right: 45px !important;
+            }
+        }
+    }
+    @media(max-width:767px) {
+        h2 {
+            margin: 20px 0px;
+            text-align: center;
+            font-size: 30px;
+        }
+        .CalOne {
+            display: none !important;
+        }
+        .cal_main {
+            width: 100% !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .CalTwo {
+            width: 100% !important;
+        }
+        h5 {
+            margin: 20px 0px;
+            font-size: 30px !important;
+        }
+        p {
+            font-size: 20px !important;
+            line-height: 40px !important;
+        }
+        .description {
+            padding: 20px;
+        }
+    }
+}

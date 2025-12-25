@@ -1,0 +1,65 @@
+.Editor {
+  .formSubmmtion {
+    p,
+    h6 {
+      // font-weight: 600;
+    }
+    h6 {
+      margin-bottom: 0px;
+    }
+    .section {
+      margin-top: 30px;
+    }
+  }
+  .preparedBy_style {
+    margin: 40px 0px;
+  }
+  /* Hide signature/contract section while editing */
+  .page-break {
+    display: none;
+  }
+  /* Show only in print */
+  @media print {
+    .page-break {
+      display: block !important;
+    }
+  }
+}
+/* Editor page container */
+.editorpage {
+  min-height: 100vh !important;
+  /* safer than 100dvh */
+  margin-top: 6rem;
+  width: 100%;
+  visibility: visible !important;
+  display: flex;
+  flex-direction: column;
+}
+/* TinyMCE wrapper */
+.editor-wrapper {
+  width: 100%;
+  min-height: 500px !important;
+  /* ensures editor is visible */
+  flex-grow: 1;
+  @media (max-width: 768px) {
+    min-height: 400px !important;
+  }
+  iframe {
+    width: 100% !important;
+    height: 100% !important;
+    /* make iframe fill parent */
+  }
+}
+.All_Button {
+  margin: 2rem 0px;
+  display: flex;
+  gap: 1rem;
+  @media (max-width:767px) {
+    display: block;
+    margin: 0px !important;
+    .button_theme {
+      background-color: black;
+      margin: 10px 0px !important;
+    }
+  }
+}

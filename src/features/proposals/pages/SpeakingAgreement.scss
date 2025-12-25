@@ -1,0 +1,58 @@
+.spc {
+  // .component-ref {
+  //     margin: 20px !important;
+  //   }
+  margin: 6rem 0;
+  @media print {
+    @page {
+      size: auto;
+      margin: 20mm;
+      counter-increment: none;
+      content: none;
+    }
+  }
+  .add_margin {
+    // background-color: aqua !important;
+    margin: 100px !important;
+    padding: 100px;
+  }
+  .SepakingAggrement {
+    margin: 0px 40px;
+    margin-top: 60px !important;
+    h3 {
+      text-align: center;
+    }
+    .ql-align-right {
+      text-align: right !important;
+    }
+    .ql-align-center {
+      text-align: center !important;
+    }
+    .ql-align-justify {
+      text-align: justify !important;
+    }
+    .tabbed {
+      margin-left: 20px;
+    }
+    @media print {
+      @page {
+        size: auto;
+        counter-increment: none;
+        content: none;
+      }
+      .add_margin {
+        margin: 100px !important;
+      }
+    }
+  }
+  .editbutton {
+    text-align: right !important;
+    display: flex;
+    width: 100%;
+    justify-content: right !important;
+    .button_theme {
+      width: 20%;
+      margin: 0px 10px;
+    }
+  }
+}

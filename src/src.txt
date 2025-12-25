@@ -1,0 +1,201 @@
+.
+├── .DS_Store
+├── app
+│   └── store
+│       ├── rootReducer.ts
+│       ├── slices
+│       │   ├── chatSlice.ts
+│       │   ├── conversationSlice.ts
+│       │   └── getClientProfileSlice.ts
+│       └── store.ts
+├── App.css
+├── App.tsx
+├── assets
+│   ├── .DS_Store
+│   ├── addimg.jpg
+│   ├── apt.png
+│   ├── aptvideo.mp4
+│   ├── Automated_Pricing_Calc.jpg
+│   ├── banner.png
+│   ├── card1.png
+│   ├── card2.png
+│   ├── images.jfif
+│   ├── Loading_icon.gif
+│   ├── Logo.png
+│   ├── nodata.png
+│   ├── pic.png
+│   ├── picture.png
+│   ├── Picture1.jpg
+│   ├── picture1.png
+│   ├── profile-image.jpg
+│   ├── profile.png
+│   ├── proposal.JPG
+│   └── SalN.gif
+├── components
+│   ├── create.tsx
+│   ├── layout
+│   │   ├── Banner.scss
+│   │   ├── Banner.tsx
+│   │   ├── Footer.scss
+│   │   ├── Footer.tsx
+│   │   ├── Navbar.scss
+│   │   └── Navbar.tsx
+│   └── ui
+│       ├── Button.scss
+│       ├── Button.tsx
+│       ├── Card.scss
+│       ├── Card.tsx
+│       ├── CardComponent.scss
+│       └── Pagination.tsx
+├── features
+│   ├── auth
+│   │   ├── CreateAccount.scss
+│   │   ├── CreateAccount.tsx
+│   │   ├── Forgot
+│   │   │   ├── ChangePassword.tsx
+│   │   │   ├── Forgot.scss
+│   │   │   ├── Forgot.tsx
+│   │   │   └── ForgotSendOtp.tsx
+│   │   ├── OtpStep.scss
+│   │   ├── OtpStep.tsx
+│   │   ├── SendOtp.scss
+│   │   ├── SendOtp.tsx
+│   │   ├── Signin.scss
+│   │   ├── Signin.tsx
+│   │   ├── Signup.scss
+│   │   ├── Signup.tsx
+│   │   ├── VerifyOtp.scss
+│   │   └── VerifyOtp.tsx
+│   ├── calculators
+│   │   ├── APTSupplementProgram
+│   │   │   ├── APTSupplementProgram.scss
+│   │   │   ├── APTSupplementProgram.tsx
+│   │   │   ├── Coaching.tsx
+│   │   │   ├── KeynoteSpeaker.tsx
+│   │   │   ├── MastermindGroup.tsx
+│   │   │   ├── TrainingSessionhalfday.tsx
+│   │   │   └── TrainingSessionhours.tsx
+│   │   ├── components
+│   │   │   ├── AdvancedPrice.scss
+│   │   │   ├── AdvancedPrice.tsx
+│   │   │   ├── GrossPayCalculator.scss
+│   │   │   ├── GrossPayCalculator.tsx
+│   │   │   ├── MarginCalculator.tsx
+│   │   │   ├── PartnershipDiscounts.scss
+│   │   │   ├── PartnershipDiscounts.tsx
+│   │   │   ├── PriceCalculator.tsx
+│   │   │   ├── ProfitabilityModule.scss
+│   │   │   ├── ProfitabilityModule.tsx
+│   │   │   ├── ProfitCalculator.tsx
+│   │   │   ├── SalePriceCalculator.scss
+│   │   │   ├── SalePriceCalculator.tsx
+│   │   │   ├── SellingPriceCalculator.scss
+│   │   │   ├── SellingPriceCalculator.tsx
+│   │   │   └── utils
+│   │   │       ├── AssessmentPrograms.tsx
+│   │   │       ├── Lms.tsx
+│   │   │       ├── One_Time.tsx
+│   │   │       └── Soft_Skill_Pricing.tsx
+│   │   ├── functions
+│   │   │   ├── marginCalculatorFunction.ts
+│   │   │   ├── priceCalculatorFunction.ts
+│   │   │   ├── profitMarginCalculatorFunction.ts
+│   │   │   ├── saleCalculatorFunction.ts
+│   │   │   └── sellingPriceCalculator.ts
+│   │   └── pages
+│   │       ├── Calculator.scss
+│   │       ├── Calculator.tsx
+│   │       └── TrialCalculator.tsx
+│   ├── chat
+│   │   ├── _variables.scss
+│   │   ├── ChatLayout.scss
+│   │   ├── ChatLayout.tsx
+│   │   ├── ChatStreamComponent.scss
+│   │   ├── ChatStreamComponent.tsx
+│   │   ├── components
+│   │   │   ├── ChatInput
+│   │   │   │   ├── ChatInput.scss
+│   │   │   │   ├── ChatInput.tsx
+│   │   │   │   ├── ChatMessage.tsx
+│   │   │   │   └── TemplateModal
+│   │   │   │       ├── TemplateModal.scss
+│   │   │   │       └── TemplateModal.tsx
+│   │   │   ├── ChatSidebar
+│   │   │   │   ├── BusinessModal
+│   │   │   │   │   ├── BusinessModal.scss
+│   │   │   │   │   └── BusinessModal.tsx
+│   │   │   │   ├── ChatSidebar.scss
+│   │   │   │   ├── ChatSidebar.tsx
+│   │   │   │   └── NewChatModal
+│   │   │   │       ├── NewChatModal.scss
+│   │   │   │       └── NewChatModal.tsx
+│   │   │   └── ChatWindow
+│   │   │       ├── ChatWindow.scss
+│   │   │       ├── ChatWindow.tsx
+│   │   │       └── ProposalForm.tsx
+│   │   ├── EditorPage
+│   │   │   ├── EditorPage.scss
+│   │   │   ├── EditorPage.tsx
+│   │   │   ├── SignatureInput.scss
+│   │   │   └── SignatureInput.tsx
+│   │   ├── var2.scss
+│   │   └── variables.scss
+│   ├── common
+│   │   ├── components
+│   │   │   ├── Benefits.scss
+│   │   │   ├── Benefits.tsx
+│   │   │   ├── CalculatorGrid.scss
+│   │   │   ├── CalculatorGrid.tsx
+│   │   │   ├── ClosingCTA.scss
+│   │   │   ├── ClosingCTA.tsx
+│   │   │   ├── Hero.scss
+│   │   │   ├── Hero.tsx
+│   │   │   ├── KeyFeatures.scss
+│   │   │   ├── KeyFeatures.tsx
+│   │   │   ├── Overview.scss
+│   │   │   └── Overview.tsx
+│   │   └── Home.tsx
+│   ├── dashboard
+│   │   ├── Profile.scss
+│   │   └── Profile.tsx
+│   └── proposals
+│       ├── components
+│       │   ├── Download.scss
+│       │   ├── Download.tsx
+│       │   ├── Draft.scss
+│       │   └── Draft.tsx
+│       └── pages
+│           ├── AIProposal.scss
+│           ├── AIProposal.tsx
+│           ├── CoachingAgreement.scss
+│           ├── CoachingAgreement.tsx
+│           ├── LeadershipProposal.scss
+│           ├── LeadershipProposal.tsx
+│           ├── Proposal.scss
+│           ├── Proposal.tsx
+│           ├── SpeakerAgreement.tsx
+│           ├── SpeakingAgreement.scss
+│           └── SpeakingAgreement.tsx
+├── hooks
+│   ├── useAuth.ts
+│   ├── useChat.ts
+│   └── usePricing.ts
+├── index.css
+├── main.tsx
+├── src.txt
+├── types
+│   ├── react-google-recaptcha.d.ts
+│   └── react-otp-input.d.ts
+├── utils
+│   ├── api
+│   │   ├── Api.tsx
+│   │   ├── auth.ts
+│   │   └── axiosInstance.ts
+│   ├── constants
+│   │   ├── alerts.ts
+│   │   └── host.tsx
+│   └── context
+│       └── UserContext.tsx
+└── variables.scss
+
+38 directories, 161 files

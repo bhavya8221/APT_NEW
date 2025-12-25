@@ -1,0 +1,243 @@
+@use "./variables" as *;
+
+// ===== MAIN LAYOUT =====
+.chat-layout {
+  display: flex;
+  height: 100vh;
+  background: $bg-lighter;
+  position: relative;
+  overflow: hidden;
+}
+
+// ===== MOBILE SIDEBAR TOGGLE =====
+.mobile-sidebar-toggle {
+  display: none;
+  position: fixed;
+  top: 1.5rem;
+  left: 1rem;
+  z-index: 999;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(
+    135deg,
+    $primary-red 0%,
+    darken($primary-red, 8%) 100%
+  );
+  color: $text-white;
+  border: none;
+  border-radius: $border-radius;
+  padding: 0.75rem 1.25rem;
+  font-size: $font-size-sm;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: $shadow-md;
+  transition: $transition-base;
+
+  .toggle-icon {
+    font-size: 1.125rem;
+  }
+
+  span {
+    @media (max-width: $breakpoint-sm) {
+      display: none;
+    }
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  @media (max-width: $breakpoint-md) {
+    display: flex;
+  }
+}
+
+// ===== DESKTOP SIDEBAR =====
+.desktop-sidebar {
+  width: 320px;
+  height: 100vh;
+  flex-shrink: 0;
+  background: $bg-primary;
+  border-right: 1px solid $border-light;
+  overflow: hidden;
+
+  @media (max-width: $breakpoint-md) {
+    display: none;
+  }
+}
+
+// ===== MOBILE SIDEBAR =====
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  animation: fadeIn 0.2s ease-out;
+  backdrop-filter: blur(4px);
+}
+
+.mobile-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 320px;
+  max-width: 85vw;
+  background: $bg-primary;
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  box-shadow: $shadow-xl;
+  animation: slideInFromLeft 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  .mobile-sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+    background: linear-gradient(
+      135deg,
+      rgba($primary-red, 0.05) 0%,
+      rgba($primary-blue, 0.05) 100%
+    );
+    border-bottom: 2px solid $border-light;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, $primary-red 0%, $primary-blue 100%);
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, $primary-red 0%, $primary-blue 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 0;
+    }
+
+    .close-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: $text-secondary;
+      cursor: pointer;
+      padding: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      transition: $transition-fast;
+
+      &:hover {
+        background: rgba($primary-red, 0.1);
+        color: $primary-red;
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+  .mobile-sidebar-content {
+    flex: 1;
+    overflow: hidden;
+  }
+}
+
+// ===== MAIN CHAT CONTENT =====
+.chat-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  background: $bg-lighter;
+}
+
+// ===== ANIMATIONS =====
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// ===== RESPONSIVE =====
+@media (max-width: $breakpoint-md) {
+  .chat-layout {
+    padding-top: 4.5rem;
+  }
+
+  .mobile-sidebar {
+    width: 280px;
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .mobile-sidebar-toggle {
+    top: 1rem;
+    left: 0.75rem;
+    padding: 0.625rem 1rem;
+    font-size: $font-size-xs;
+
+    .toggle-icon {
+      font-size: 1rem;
+    }
+  }
+
+  .mobile-sidebar {
+    width: 100%;
+    max-width: 100vw;
+  }
+}

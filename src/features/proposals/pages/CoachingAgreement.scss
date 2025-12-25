@@ -1,0 +1,27 @@
+.coc {
+  margin: 6rem 0;
+  .Coaching_aggrement {
+    margin: 0px 40px;
+    margin-top: 60px !important;
+
+    h3 {
+      text-align: center;
+    }
+
+    .ql-align-right {
+      text-align: right !important;
+    }
+  }
+
+  .editbutton {
+    text-align: right !important;
+    display: flex;
+    width: 100%;
+    justify-content: right !important;
+
+    .button_theme {
+      width: 20%;
+      margin: 0px 10px;
+    }
+  }
+}

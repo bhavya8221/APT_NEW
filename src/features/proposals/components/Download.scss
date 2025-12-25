@@ -1,0 +1,20 @@
+.Download {
+  margin: 6rem 0;
+  text-align: center;
+  min-height: 100dvh;
+  .Download_inner {
+    display: flex;
+    justify-content: center;
+    h2 {
+      font-weight: bolder;
+    }
+  }
+  .button_theme {
+    width: 15%;
+    margin: 0px 20px;
+    // margin: auto;
+  }
+  iframe {
+    margin: 20px 0px;
+  }
+}

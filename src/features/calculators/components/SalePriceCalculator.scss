@@ -1,0 +1,122 @@
+.SalePriceCalculatorComponent {
+    margin: auto;
+
+    .form-control {
+        padding: 11px !important
+    }
+
+    .table {
+        width: 50% !important;
+    }
+
+    .form-select {
+        padding: 11px !important;
+    }
+
+    .add_placeholder_persent {
+        position: absolute;
+        left: 45%;
+        margin-top: 9px;
+        text-align: center !important;
+    }
+
+    .add_placeholder_doller {
+        position: absolute;
+        left: 72%;
+        margin-top: 9px;
+        text-align: center !important;
+
+    }
+
+
+
+
+   
+
+    .cal_row {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+
+        .cal_col_main {
+            width: 50%;
+            display: flex;
+
+            .cal_col {
+                width: 90%;
+            }
+
+            .cal_col_off,
+            .cal_col_each {
+                width: 10%;
+                align-self: center !important;
+                text-align: center !important;
+            }
+        }
+
+
+        .cal_col_row {
+            display: flex !important;
+            width: 100%;
+
+            .cal_col_col {
+                width: 50%;
+            }
+        }
+    }
+
+
+
+  
+
+    h5 {
+        color: black;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 42px;
+        /* 131.25% */
+    }
+
+    p {
+        color: black;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 34px;
+        /* 141.667% */
+    }
+
+    .profit_main {
+
+
+        li {
+            color: black;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 34px;
+            /* 141.667% */
+        }
+    }
+
+    @media (max-width:767px) {
+        width: 100% !important;
+
+        .cal_row {
+            display: block !important;
+
+            .cal_col_main {
+                width: 100% !important;
+            }
+        }
+
+        .add_placeholder_doller {
+            left: 72% !important;
+        }
+
+        .add_placeholder {
+            left: 69% !important;
+        }
+
+    }
+
+}

@@ -1,0 +1,48 @@
+.create-account-page {
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f7f9fc;
+  padding: 2rem;
+}
+
+.create-card {
+  width: 100%;
+  max-width: 480px;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+  transition: 0.25s ease;
+
+  &:hover {
+    box-shadow: var(--card-shadow-hover);
+    transform: translateY(-2px);
+  }
+
+  .title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--foreground);
+  }
+
+  .phone-input {
+    input {
+      height: 48px !important;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+  }
+
+  .submit-btn {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .create-card {
+    padding: 1.6rem;
+  }
+}

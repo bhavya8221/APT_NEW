@@ -1,0 +1,38 @@
+.stream-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.messages-box {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  background: var(--section-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+}
+
+.bubble {
+  padding: 10px 14px;
+  margin-bottom: 10px;
+  border-radius: 12px;
+  font-size: 15px;
+  line-height: 1.5;
+
+  &.user {
+    background: var(--primary);
+    color: var(--primary-foreground);
+    align-self: flex-end;
+  }
+
+  &.assistant {
+    background: var(--accent);
+    color: var(--accent-foreground);
+    align-self: flex-start;
+  }
+}
+
+.stream-input {
+  margin-top: 1rem;
+}

@@ -1,0 +1,61 @@
+.forgot-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100dvh;
+  padding: 2rem;
+  background: hsl(var(--background));
+
+  .forgot-card {
+    width: 100%;
+    max-width: 520px;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    background: var(--card);
+  }
+
+  .forgot-title {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--foreground);
+  }
+
+  .forgot-steps {
+    margin-bottom: 1.25rem;
+  }
+
+  .forgot-form {
+    margin-top: 0.5rem;
+  }
+
+  .btn-theme {
+    background: var(--primary) !important;
+    color: var(--primary-foreground) !important;
+    border: none;
+  }
+
+  .signin-link-text {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+
+    .forgot-card {
+      padding: 1.25rem;
+    }
+  }
+}
+
+/* small helpers for OTP input look */
+.VerifyOtp,
+.change-password,
+.forgot-sendotp,
+.forgot-sendotp .ant-form-item {
+  .verify-card,
+  .sendotp-card {
+    width: 100%;
+  }
+}

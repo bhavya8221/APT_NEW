@@ -1,0 +1,75 @@
+.SendOtp {
+  min-height: 100dvh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: hsl(var(--background));
+  padding: 2rem;
+
+  .sendotp-card {
+    width: 100%;
+    max-width: 420px;
+    background: #fff;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    transition: 0.25s ease;
+    text-align: center;
+
+    &:hover {
+      box-shadow: var(--card-shadow-hover);
+      transform: translateY(-2px);
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 1.8rem;
+      color: hsl(var(--foreground));
+    }
+
+    .sendotp-btn {
+      width: 100%;
+      background: var(--primary) !important;
+      height: 45px;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+      color: var(--primary-foreground) !important;
+
+      &:hover {
+        background: var(--primary-hover) !important;
+        box-shadow: var(--glow-primary);
+      }
+    }
+
+    .signin-text {
+      margin-top: 1.5rem;
+      font-size: 15px;
+      color: #555;
+
+      span {
+        color: var(--accent);
+        cursor: pointer;
+        font-weight: 500;
+        transition: 0.2s;
+
+        &:hover {
+          color: var(--primary);
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .sendotp-card {
+      padding: 1.8rem;
+
+      h1 {
+        font-size: 24px;
+      }
+    }
+  }
+}

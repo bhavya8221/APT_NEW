@@ -1,0 +1,58 @@
+.AdvancedPrice {
+  margin: auto;
+  .button_theme {
+    width: 100% !important;
+    margin-top: 20px !important;
+  }
+  .videoo {
+    width: 100%;
+  }
+  .form-control {
+    padding: 6px !important;
+    margin: 5px !important;
+    background: rgba(238, 35, 37, 0.1) !important;
+    @media (min-width: 767px) {
+      width: auto !important;
+    }
+  }
+  .blank_input {
+    background: white;
+    padding: 0px 4px;
+    border-radius: 6px;
+    margin: 8px 0px !important;
+    align-self: center !important;
+    // width: inherit !important;
+  }
+  .Row_1 {
+    display: flex !important;
+    width: 100%;
+    align-self: center !important;
+    .Col_1 {
+      align-self: center !important;
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      width: 100%;
+    }
+  }
+  .profit_main {
+    li {
+      color: black;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 34px;
+    }
+  }
+  @media (max-width: 767px) {
+    .Row_1 {
+      display: block !important;
+    }
+  }
+}
+.Button_section {
+  display: flex !important;
+  width: 100%;
+  .button_theme {
+    margin: 10px;
+  }
+}
