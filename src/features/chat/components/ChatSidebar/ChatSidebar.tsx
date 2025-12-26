@@ -20,7 +20,6 @@ const BsBuilding = BsBuildingRaw as React.FC<React.SVGProps<SVGSVGElement>>;
 const BsArrowLeft = BsArrowLeftRaw as React.FC<React.SVGProps<SVGSVGElement>>;
 
 /* MODALS */
-import NewChatModal from "./NewChatModal/NewChatModal";
 import BusinessModal from "./BusinessModal/BusinessModal";
 
 /* API + REDUX */
@@ -150,6 +149,11 @@ const ChatSidebar: React.FC<ChatSidebarProps> = ({ onSelectConversation }) => {
     }
   };
 
+  const handleNewChatClick = () => {
+    setSelectedConversationId(null);
+    onSelectConversation(null);
+  };
+
   const handleBusinessSelect = (businessId: number) => {
     const business = businesses.find((b) => b.id === businessId) || null;
     setSelectedBusiness(business);
@@ -171,7 +175,7 @@ const ChatSidebar: React.FC<ChatSidebarProps> = ({ onSelectConversation }) => {
       <div className="sidebar-section chat-section">
         <button
           className="new-chat-button"
-          onClick={() => setIsNewChatModalOpen(true)}
+          onClick={() => handleNewChatClick()}
         >
           <BsPlus className="icon" />
           <span>New Chat</span>
@@ -267,15 +271,6 @@ const ChatSidebar: React.FC<ChatSidebarProps> = ({ onSelectConversation }) => {
           ))}
         </ul>
       </div>
-
-      {/* MODALS */}
-      <NewChatModal
-        isOpen={isNewChatModalOpen}
-        onClose={() => setIsNewChatModalOpen(false)}
-        onSubmit={handleNewChatSubmit}
-        businesses={businesses}
-        templates={templates}
-      />
 
       <BusinessModal
         isOpen={isBusinessModalOpen}
