@@ -2,6 +2,7 @@ import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 // Layout
+
 import Navbar from "@/components/layout/Navbar";
 // import Footer from "@/components/layout/Footer";
 
@@ -102,6 +103,7 @@ function AppContent() {
   return (
     <>
       {!hideChrome && <Navbar />}
+      
 
       <div className="content_main">
         <Routes>

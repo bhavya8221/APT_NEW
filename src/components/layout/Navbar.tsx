@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Drawer, Button, Dropdown, Modal } from "antd";
 import type { MenuProps } from "antd";
 import {
@@ -21,7 +21,7 @@ interface Profile {
 
 const NavBar = () => {
   const navigate = useNavigate();
-  // const { pathname } = useLocation();
+  const { pathname } = useLocation();
 
   const token = localStorage.getItem("UserLoginTokenApt");
   const userStatus = localStorage.getItem("UserStatus");
@@ -152,6 +152,9 @@ const NavBar = () => {
           />
 
           {/* Desktop Menu */}
+           {pathname === "/forgotpassword" ?( <Button className="login-btn" onClick={() => navigate("/signin")}>
+                Login
+              </Button>): pathname !== "/" && !token && token === null ? null : (
           <div className="nav-desktop">
             <Link to="/" className="nav-link">
               <Home size={16} /> Home
@@ -185,7 +188,7 @@ const NavBar = () => {
               </Dropdown>
             )}
           </div>
-
+              )}
           {/* Mobile Hamburger */}
           <MenuIcon
             className="nav-mobile-btn"
