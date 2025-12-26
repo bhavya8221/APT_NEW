@@ -16,7 +16,6 @@
   z-index: 50;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 0.625rem 2rem;
   background: $bg-primary;
   border-bottom: 1px solid $border-light;
@@ -26,15 +25,14 @@
     padding: 0.625rem 1.5rem;
   }
 
-  .conversation-title {
-    font-size: 0.9375rem;
-    font-weight: 600;
-    color: $text-primary;
-    margin: 0;
+  .header-content {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
     flex: 1;
   }
 
-  .info-button {
+  .info-icon {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -53,25 +51,34 @@
       color: $primary-red;
     }
   }
+
+  .conversation-title {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: $text-primary;
+    margin: 0;
+    flex: 1;
+  }
 }
 
 // ===== TOOLTIP =====
 .header-tooltip {
   position: fixed;
   top: 3.5rem;
-  right: 2rem;
-  width: 380px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 420px;
   max-width: calc(100vw - 4rem);
   background: $bg-primary;
   border: 1px solid $border-light;
   border-radius: $border-radius-lg;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-  padding: 1.25rem;
+  padding: 1.5rem;
   z-index: 1001;
   animation: tooltipSlideIn 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 
   .tooltip-title {
-    font-size: 1rem;
+    font-size: 1.125rem;
     font-weight: 700;
     color: $primary-blue;
     margin-bottom: 0.75rem;
@@ -85,11 +92,11 @@
   }
 
   .tooltip-example {
-    padding: 0.875rem;
+    padding: 1rem;
     background: rgba($primary-blue, 0.05);
     border-left: 3px solid $primary-blue;
     border-radius: $border-radius-sm;
-    margin-bottom: 0.875rem;
+    margin-bottom: 1rem;
 
     strong {
       font-size: 0.75rem;
@@ -98,13 +105,16 @@
       text-transform: uppercase;
       letter-spacing: 0.05em;
       display: block;
-      margin-bottom: 0.375rem;
+      margin-bottom: 0.5rem;
     }
 
-    font-size: 0.8125rem;
-    line-height: 1.5;
-    color: $text-primary;
-    font-style: italic;
+    p {
+      font-size: 0.8125rem;
+      line-height: 1.5;
+      color: $text-primary;
+      font-style: italic;
+      margin: 0;
+    }
   }
 
   .tooltip-tag {
@@ -117,8 +127,7 @@
   }
 
   @media (max-width: $breakpoint-md) {
-    right: 1.5rem;
-    width: 340px;
+    width: 360px;
   }
 
   @media (max-width: $breakpoint-sm) {
@@ -127,6 +136,7 @@
     width: auto;
     max-width: none;
     top: 3rem;
+    transform: none;
   }
 }
 
@@ -209,12 +219,144 @@
   }
 }
 
-// ===== MESSAGE WRAPPER =====
-.message-wrapper {
+// ===== MESSAGE GROUP =====
+.message-group {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
   animation: slideUp 0.3s ease-out;
+}
+
+// ===== CHAT BUBBLES =====
+.chat-bubble {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+  animation: slideUp 0.3s ease-out;
+
+  &.user {
+    justify-content: flex-end;
+
+    .message-content {
+      background: linear-gradient(
+        135deg,
+        $primary-blue 0%,
+        darken($primary-blue, 8%) 100%
+      );
+      color: $text-white;
+      padding: 0.875rem 1.25rem;
+      border-radius: $border-radius-lg;
+      border-bottom-right-radius: 4px;
+      max-width: 75%;
+      font-size: $font-size-base;
+      line-height: 1.6;
+      box-shadow: 0 2px 8px rgba($primary-blue, 0.25);
+
+      @media (max-width: $breakpoint-sm) {
+        max-width: 85%;
+      }
+    }
+  }
+
+  &.bot {
+    align-items: flex-start;
+
+    .bot-avatar {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(
+        135deg,
+        $primary-blue 0%,
+        darken($primary-blue, 10%) 100%
+      );
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $text-white;
+      font-size: 1.125rem;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba($primary-blue, 0.3);
+
+      &.pulse-icon {
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+
+      @media (max-width: $breakpoint-sm) {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+      }
+    }
+
+    .bot-message-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      max-width: calc(100% - 52px);
+
+      @media (max-width: $breakpoint-sm) {
+        max-width: calc(100% - 48px);
+      }
+    }
+
+    .message-content {
+      background: $bg-primary;
+      color: $text-primary;
+      padding: 0.875rem 1.25rem;
+      border-radius: $border-radius-lg;
+      border-bottom-left-radius: 4px;
+      border: 1px solid $border-light;
+      font-size: $font-size-base;
+      line-height: 1.6;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+
+      &.loading {
+        background: rgba($primary-blue, 0.03);
+        border-color: rgba($primary-blue, 0.1);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .loading-text {
+        color: $text-secondary;
+        font-style: italic;
+        font-size: $font-size-sm;
+      }
+
+      .loading-dots {
+        display: flex;
+        gap: 3px;
+
+        span {
+          width: 4px;
+          height: 4px;
+          background: $text-secondary;
+          border-radius: 50%;
+          animation: dot-flashing 1.4s infinite;
+
+          &:nth-child(2) {
+            animation-delay: 0.2s;
+          }
+
+          &:nth-child(3) {
+            animation-delay: 0.4s;
+          }
+        }
+      }
+
+      .typing-cursor {
+        display: inline-block;
+        width: 2px;
+        height: 1em;
+        background: $primary-blue;
+        margin-left: 2px;
+        animation: blink 1s step-end infinite;
+      }
+    }
+  }
 }
 
 // ===== MESSAGE ACTIONS =====
@@ -222,14 +364,9 @@
   display: flex;
   gap: 0.5rem;
   flex-wrap: wrap;
-  padding-left: 52px;
   animation: fadeIn 0.3s ease-out 0.2s both;
 
-  @media (max-width: $breakpoint-sm) {
-    padding-left: 0;
-  }
-
-  .action-btn {
+  .action-button {
     display: flex;
     align-items: center;
     gap: 0.375rem;
@@ -270,7 +407,7 @@
   }
 }
 
-// ===== LOADING MESSAGE =====
+// ===== LOADING MESSAGE (Standalone) =====
 .loading-message {
   display: flex;
   align-items: flex-start;
@@ -580,14 +717,20 @@
   }
 }
 
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
 @keyframes tooltipSlideIn {
   from {
     opacity: 0;
-    transform: translateY(-8px);
+    transform: translateX(-50%) translateY(-8px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(-50%) translateY(0);
   }
 }
 
@@ -639,11 +782,6 @@
     p {
       font-size: $font-size-sm;
     }
-  }
-
-  .custom-tooltip {
-    min-width: 240px;
-    max-width: calc(100vw - 2rem);
   }
 
   .modal-container {
