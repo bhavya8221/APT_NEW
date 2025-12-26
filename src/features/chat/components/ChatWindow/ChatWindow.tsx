@@ -88,12 +88,14 @@ const useChatStream = (
   const streamedReplyRef = useRef("");
 
   const streamMessage = async (messageData: MessageData) => {
+    console.log(messageData,"messageData")
     const token = localStorage.getItem("UserLoginTokenApt");
     const text = messageData.text;
 
     if (!token || !text.trim()) return;
-
+console.log(currentConversation,"currentConversation")
     const isNew = currentConversation?.id ? 0 : 1;
+    console.log(isNew,"isNew")
     const titleToUse = conversationTitle || text;
     if (!conversationTitle) setConversationTitle(text);
 
@@ -237,7 +239,7 @@ const useChatStream = (
       }
     }
   };
-
+console.log(streamMessage,isStreaming)
   return { streamMessage, loading, isStreaming };
 };
 
@@ -348,7 +350,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
       setExpandLoading((prev) => ({ ...prev, [idx]: false }));
     }
   };
-
+console.log(messages,"---->>>")
   return (
     <div className="chat-window">
       {/* HEADER */}
@@ -541,10 +543,10 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
               </button>
             </div>
             <div className="modal-body">
-              {/* <ProposalForm
+              <ProposalForm
                 selectedProposal={currentConversation}
                 onSubmit={submitProposal}
-              /> */}
+              />
             </div>
           </div>
         </div>

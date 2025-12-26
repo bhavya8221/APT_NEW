@@ -26,6 +26,8 @@ import BusinessModal from "./BusinessModal/BusinessModal";
 import { fetchAllConversations } from "@/app/store/slices/conversationSlice";
 import {
   DeleteConversationApi,
+  GetBusiness,
+  GetTemplates,
   PostconversationDetailOfAI,
 } from "@/utils/api/Api";
 
@@ -62,36 +64,27 @@ const ChatSidebar: React.FC<ChatSidebarProps> = ({ onSelectConversation }) => {
     null
   );
   const [showDropdownId, setShowDropdownId] = useState<number | null>(null);
+  const [businesses, setBusinesses] = useState();
+  const [templates, setTemplates] = useState();
 
-  const [businesses, setBusinesses] = useState<Business[]>([
-    {
-      id: 1,
-      name: "Tech Solutions Inc",
-      location: "New York",
-      type: "Technology",
-    },
-    {
-      id: 2,
-      name: "Marketing Pro",
-      location: "Los Angeles",
-      type: "Marketing",
-    },
-  ]);
-
-  const templates = [
-    {
-      id: 1,
-      name: "Standard Proposal",
-      description: "Basic proposal template",
-    },
-    { id: 2, name: "Executive Summary", description: "High-level overview" },
-    { id: 3, name: "Detailed Analysis", description: "In-depth proposal" },
-  ];
-
+    useEffect(() => {
+    GetBusiness().then((res) => {
+      setBusinesses(res?.data?.data)
+      // console.log("res==>", res)
+    }).catch((e) => {
+      console.log(e, "error")
+    })
+    GetTemplates().then((res) => {
+      setTemplates(res?.data?.data)
+      // console.log(res, "res in template")
+    }).catch((e) => {
+      console.log(e, "error")
+    })
+  }, [])
   const conversationState = useSelector(
     (state: any) => state?.rootReducer?.conversations || {}
   );
-
+console.log(conversationState,"conversationState")
   useEffect(() => {
     dispatch(fetchAllConversations() as any);
   }, [dispatch]);
@@ -103,6 +96,7 @@ const ChatSidebar: React.FC<ChatSidebarProps> = ({ onSelectConversation }) => {
         conversation_id: item.id,
       });
       const data = response?.data?.data;
+      console.log(data,"data===>>>")
       onSelectConversation(data);
     } catch (err) {
       console.error("Error loading conversation details", err);
@@ -254,7 +248,7 @@ const ChatSidebar: React.FC<ChatSidebarProps> = ({ onSelectConversation }) => {
         </div>
 
         <ul className="business-list">
-          {businesses.map((business) => (
+          {businesses?.map((business) => (
             <li
               key={business.id}
               className={`business-card ${

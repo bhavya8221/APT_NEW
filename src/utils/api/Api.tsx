@@ -136,6 +136,12 @@ export const GetCalculatorDescription = (calculator_slug: string) =>
 export const CalculatorViewApi = (calculator_id: number | string) =>
   axiosInstance.post("user/markCalculatorAsViewed", { calculator_id });
 
+export const GetBusiness = async () => {
+  return await axiosInstance.get("business");
+}
+export const GetTemplates = async () => {
+  return await axiosInstance.get("templates");
+}
 // ============================================================================
 // PROPOSALS
 // ============================================================================

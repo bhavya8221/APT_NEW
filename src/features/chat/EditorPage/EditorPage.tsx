@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, RefObject } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import { Button, message as antdMessage, Skeleton, Modal } from "antd";
 import {
@@ -9,9 +9,11 @@ import {
 } from "@ant-design/icons";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ChateProposalEdited } from "@/utils/api/Api";
-import { useReactToPrint } from "react-to-print";
+// import { useReactToPrint } from "react-to-print";
 
 import "./EditorPage.scss";
+import html2pdf from "html2pdf.js";
+
 
 interface ProposalData {
   proposalContent?: string;
@@ -47,10 +49,31 @@ const CKEditorPage: React.FC = () => {
     }
   }, [proposalContent, navigate]);
 
-  const handlePrint = useReactToPrint({
-    content: () => printRef.current,
-    documentTitle: "proposal",
-  } as any);
+  // const handlePrint = useReactToPrint({
+  //   content: () => printRef.current,
+  //   documentTitle: "proposal",
+  // } as any);
+
+const handleDownloadPDF = async (): Promise<void> => {
+  const element = printRef.current;
+  if (!element) return;
+
+  const options = {
+    margin: [15, 15, 25, 15] as [number, number, number, number],
+    filename: "proposal.pdf",
+    image: { type: "jpeg" as const, quality: 0.98 },
+    html2canvas: { scale: 2, letterRendering: true },
+    jsPDF: {
+      unit: "mm" as const,
+      format: "a4" as const,
+      orientation: "portrait" as const,
+    },
+  };
+
+  await html2pdf().set(options).from(element).save();
+};
+
+
 
   const handleSave = async () => {
     setSaving(true);
@@ -143,14 +166,11 @@ const CKEditorPage: React.FC = () => {
               {saving ? "Saving..." : "Save"}
             </Button>
 
-            <Button
-              icon={<DownloadOutlined />}
-              onClick={handlePrint}
-              className="button_theme"
-              disabled={saving}
-            >
-              Download PDF
-            </Button>
+        <Button onClick={handleDownloadPDF}>
+  Download PDF
+</Button>
+
+
 
             <Button
               icon={<EyeOutlined />}

@@ -1,47 +1,62 @@
 import React from "react";
 import { Form, Input, Button } from "antd";
 
+/* TYPES */
+interface PreparedBy {
+  name: string;
+  org: string;
+  contact: string;
+}
+
+interface ProposalFormValues {
+  preparedByName: string;
+  preparedByOrg: string;
+  preparedByContact: string;
+}
+
+interface ChatMessage {
+  id: string;
+  message?: string;
+  conversation_id?: string | number;
+}
+
+interface SelectedProposal {
+  chats?: ChatMessage[];
+}
+
 interface ProposalFormProps {
   onSubmit: (data: any) => void;
-  selectedProposal: {
-    id?: string | number;
-    chats?: {
-      id: string;
-      sender: "user" | "bot";
-      text: string | null;
-    }[];
-  } | null;
+  selectedProposal?: SelectedProposal | null;
 }
 
 const ProposalForm: React.FC<ProposalFormProps> = ({
   onSubmit,
   selectedProposal,
 }) => {
-  const [form] = Form.useForm();
+  const [form] = Form.useForm<ProposalFormValues>();
 
-  // Pick the LAST bot message (correct for new ChatWindow)
-  const lastBotMessage = selectedProposal?.chats
-    ?.filter((m) => m.sender === "bot")
-    ?.pop();
-
-  const handleSubmit = (values: any) => {
+  const handleSubmit = (values: ProposalFormValues) => {
     const proposalData = {
-      proposalContent: lastBotMessage?.text || "",
-      conversation_id: selectedProposal?.id || "",
-      message_id: lastBotMessage?.id || "",
+      proposalContent: selectedProposal?.chats?.[0]?.message || "",
+      conversation_id: selectedProposal?.chats?.[0]?.conversation_id,
+      message_id: selectedProposal?.chats?.[0]?.id,
       preparedBy: {
         name: values.preparedByName,
         org: values.preparedByOrg,
         contact: values.preparedByContact,
-      },
+      } as PreparedBy,
     };
 
     onSubmit(proposalData);
   };
 
   return (
-    <Form form={form} layout="vertical" onFinish={handleSubmit}>
-      {/* Prepared By — Name */}
+    <Form
+      form={form}
+      layout="vertical"
+      onFinish={handleSubmit}
+    >
+      {/* Prepared By Section */}
       <Form.Item
         label="Your Name"
         name="preparedByName"
@@ -50,7 +65,6 @@ const ProposalForm: React.FC<ProposalFormProps> = ({
         <Input placeholder="Name" />
       </Form.Item>
 
-      {/* Prepared By — Org */}
       <Form.Item
         label="Your Organization Name"
         name="preparedByOrg"
@@ -59,7 +73,6 @@ const ProposalForm: React.FC<ProposalFormProps> = ({
         <Input placeholder="Organization" />
       </Form.Item>
 
-      {/* Prepared By — Contact */}
       <Form.Item
         label="Your Contact Number"
         name="preparedByContact"
@@ -74,9 +87,9 @@ const ProposalForm: React.FC<ProposalFormProps> = ({
         <Input placeholder="Contact" maxLength={10} />
       </Form.Item>
 
-      {/* Submit Button */}
+      {/* Save Button */}
       <Form.Item>
-        <Button type="primary" htmlType="submit" className="button_theme">
+        <Button type="primary" htmlType="submit">
           Save Proposal
         </Button>
       </Form.Item>
