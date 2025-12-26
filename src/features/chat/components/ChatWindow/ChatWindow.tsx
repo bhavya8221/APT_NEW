@@ -405,6 +405,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
             </p>
           </div>
         )}
+        
 
         {/* Messages */}
         {messages.map((msg, i) => (
